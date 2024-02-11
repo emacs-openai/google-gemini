@@ -29,8 +29,12 @@
 ;;
 ;;; API
 
+(defun google-gemini-content-make-contents (text)
+  "Create a contents value."
+  `((parts . [((text . ,text))])))
+
 ;;;###autoload
-(cl-defun google-gemini-generate-content ( contents callback
+(cl-defun google-gemini-content-generate ( contents callback
                                            &key
                                            (content-type "application/json"))
   "Send generate content request."
@@ -39,7 +43,7 @@
     :type "POST"
     :headers (google-gemini--headers content-type)
     :data (google-gemini--json-encode
-           `(("contents" . ,contents)))
+           `(("contents" . [,contents])))
     :parser 'json-read
     :complete (cl-function
                (lambda (&key data &allow-other-keys)
@@ -49,10 +53,19 @@
 ;;; Application
 
 ;;;###autoload
-(defun google-gemini-say ()
+(defun google-gemini-content-prompt ()
   "Start making a conversation to Google Gemini."
   (interactive)
-  )
+  (if-let* ((text (read-string "Content: "))
+            (contents (google-gemini-content-make-contents text)))
+      (google-gemini-content-generate contents
+                                      (lambda (data)
+                                        (let-alist data
+                                          (let-alist (elt .candidates 0)
+                                            (let-alist .content
+                                              (let-alist (elt .parts 0)
+                                                (message "%s" .text)))))))
+    (user-error "Abort, cancel generate content operation")))
 
 (provide 'google-gemini-content)
 ;;; google-gemini-content.el ends here
