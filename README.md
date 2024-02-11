@@ -16,6 +16,22 @@ interactable commands you can use, and those are mostly examples.*
 
 - [Google AI for Developers - REST API](https://ai.google.dev/tutorials/rest_quickstart)
 
+## 🔨 Usage
+
+You will need to set up your API key before you can use this library.
+
+```elisp
+(setq google-gemini-key "[YOUR API KEY]")
+```
+
+Alternatively you can configure a function to retrieve the key from some
+external source. A function, `google-gemini-key-auth-source` is provided to
+retrieve the key from an auth-source entry under the `:host` key `api.google-gemini.com`
+
+```elisp
+(setq google-gemini-key #'google-gemini-key-auth-source)
+```
+
 ## 🛠️ Contribute
 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
