@@ -15,3 +15,6 @@ dist/
 # packaging
 *-autoloads.el
 *-pkg.el
+
+# ignore internal test
+_test/
