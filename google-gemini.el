@@ -99,16 +99,7 @@ If BASE-URL is not specified, it defaults to `google-gemini-base-url'."
 
 Arguments CONTENT-TYPE are common request headers."
   (google-gemini--alist-omit-null
-   `(("Content-Type" . ,content-type)
-     ,(if (or (null key)
-              (string-empty-p key))
-          ""
-        (pcase openai-key-type
-          (:bearer    `("Authorization" . ,(concat "Bearer " key)))
-          (:azure-api `("api-key" . ,key))
-          (_           (user-error "Invalid key type: %s"
-                                   openai-key-type))))
-     )))
+   `(("Content-Type" . ,content-type))))
 
 (defun google-gemini--json-encode (object)
   "Wrapper for function `json-encode' but it remove nil value before
