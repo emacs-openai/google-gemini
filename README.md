@@ -1,12 +1,14 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![JCS-ELPA](https://raw.githubusercontent.com/jcs-emacs/badges/master/elpa/v/google-gemini.svg)](https://jcs-emacs.github.io/jcs-elpa/#/google-gemini)
 
+<a href="https://gemini.google.com/"><img align="right" src="etc/logo.png"></a>
+
 # google-gemini
 > Elisp library for the Google Gemini API
 
 [![CI](https://github.com/emacs-openai/google-gemini/actions/workflows/test.yml/badge.svg)](https://github.com/emacs-openai/google-gemini/actions/workflows/test.yml)
 
-The Google Gemini Elisp library provides convenient access to the Gemini API from
+The [Google Gemini][] Elisp library provides convenient access to the Gemini API from
 applications written in the Elisp language. 
 
 *P.S. This package is expected to be used as a library, so there are only a few
@@ -139,3 +141,8 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 See [`LICENSE`](./LICENSE) for details.
+
+
+<!-- Links -->
+
+[Google Gemini]: https://gemini.google.com/
