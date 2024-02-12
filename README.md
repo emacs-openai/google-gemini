@@ -66,13 +66,13 @@ argument max-tokens. By seeing Google Gemini's references page:
                                 :max-output-tokens 100)  ; Get roughly 60-80 words!
 ```
 
-## 🔗 References
-
-- [llm](https://github.com/ahyatt/llm)
-
 ## 📝 Todo List
 
 - [ ] [Text-and-image input](https://ai.google.dev/tutorials/rest_quickstart#text-and-image_input)
+
+## 🔗 References
+
+- [llm](https://github.com/ahyatt/llm)
 
 ## 🛠️ Contribute
 
