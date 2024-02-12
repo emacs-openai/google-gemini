@@ -42,7 +42,7 @@
                                            top-p
                                            top-k)
   "Send generate content request."
-  (request (format "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=%s" key)
+  (google-gemini-request (format "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=%s" key)
     :type "POST"
     :headers (google-gemini--headers content-type)
     :data (google-gemini--json-encode

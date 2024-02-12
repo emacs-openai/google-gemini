@@ -112,5 +112,33 @@ The argument OBJECT is an alist that can be construct to JSON data; see function
     (google-gemini--log "[ENCODED]: %s" encoded)
     encoded))
 
+(defun google-gemini--handle-error (response)
+  "Handle error status code from the RESPONSE."
+  (let ((status-code (request-response-status-code response)))
+    (google-gemini--log "[ERROR]: %s" response)
+    (pcase status-code
+      (400 (message "400 - Bad request.  Please check error message and your parameters"))
+      (401 (message "401 - Invalid Authentication"))
+      (429 (message "429 - Rate limit reached for requests"))
+      (500 (message "500 - The server had an error while processing your request"))
+      (_   (message "Internal error: %s" status-code)))))
+
+(defvar google-gemini-error nil
+  "Records for the last error.")
+
+(defmacro google-gemini-request (url &rest body)
+  "Wrapper for `request' function.
+
+The URL is the url for `request' function; then BODY is the arguments for rest."
+  (declare (indent 1))
+  `(progn
+     (setq google-gemini-error nil)
+     (request ,url
+       :error (cl-function
+               (lambda (&key response &allow-other-keys)
+                 (setq google-gemini-error response)
+                 (google-gemini--handle-error response)))
+       ,@body)))
+
 (provide 'google-gemini)
 ;;; google-gemini.el ends here
