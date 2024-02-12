@@ -33,6 +33,7 @@
 (cl-defun google-gemini-content-generate ( text callback
                                            &key
                                            (content-type "application/json")
+                                           (key google-gemini-key)
                                            (category "HARM_CATEGORY_DANGEROUS_CONTENT")
                                            (threshold "BLOCK_ONLY_HIGH")
                                            stop-sequences
@@ -41,8 +42,7 @@
                                            top-p
                                            top-k)
   "Send generate content request."
-  (request (format "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=%s"
-                   google-gemini-key)
+  (request (format "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=%s" key)
     :type "POST"
     :headers (google-gemini--headers content-type)
     :data (google-gemini--json-encode
