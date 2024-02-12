@@ -37,6 +37,34 @@ retrieve the key from an auth-source entry under the `:host` key `api.google-gem
 > The two variables `google-gemini-key` is the default values for sending requests!
 > However, you can still overwrite the value by passing the keywords `:key`!
 
+## 🔰 The simplest example
+
+Here is the simplest example that teaches you how to use this library.
+This is a function with a `query` and a callback function.
+
+```elisp
+(google-gemini-content-generate "How are you?"
+                                (lambda (data)
+                                  (message "%s" data)))
+```
+
+## 📨 Sending Request
+
+All arguments are exposed in the argument list, so you can send any request in any way you want.
+
+For example, the request function `google-gemini-content-generate` accepts
+argument max-tokens. By seeing Google Gemini's references page:
+
+> Max output tokens: Specifies the maximum number of tokens that can be generated
+> in the response. A token is approximately four characters. 100 tokens correspond
+> to roughly 60-80 words.
+
+```elisp
+(google-gemini-content-generate ...
+                                ...
+                                :max-output-tokens 100)  ; Get roughly 60-80 words!
+```
+
 ## 🔗 References
 
 - [llm](https://github.com/ahyatt/llm)
@@ -52,7 +80,6 @@ If you would like to contribute to this project, you may either
 clone and make pull requests to this repository. Or you can
 clone the project and establish your own branch of this tool.
 Any methods are welcome!
-
 
 ### 🔬 Development
 
