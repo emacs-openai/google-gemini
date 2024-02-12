@@ -37,6 +37,10 @@ retrieve the key from an auth-source entry under the `:host` key `api.google-gem
 > The two variables `google-gemini-key` is the default values for sending requests!
 > However, you can still overwrite the value by passing the keywords `:key`!
 
+## 🔗 References
+
+- [llm](https://github.com/ahyatt/llm)
+
 ## 🛠️ Contribute
 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
