@@ -6,7 +6,7 @@
 ;; Maintainer: JenChieh <jcs090218@gmail.com>
 ;; URL: https://github.com/emacs-openai/google-gemini
 ;; Version: 0.1.0
-;; Package-Requires: ((emacs "26.1") (request "0.3.0"))
+;; Package-Requires: ((emacs "26.1") (request "0.3.0") (tblui "0.1.0"))
 ;; Keywords: comm google gemini
 
 ;; This file is not part of GNU Emacs.
@@ -39,6 +39,7 @@
 (require 'json)
 
 (require 'request)
+(require 'tblui)
 
 (defgroup google-gemini nil
   "Elisp library for the Google Gemini API."
