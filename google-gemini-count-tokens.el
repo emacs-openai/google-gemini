@@ -31,10 +31,11 @@
 (cl-defun google-gemini-count-tokens ( text callback
                                        &key
                                        (content-type "application/json")
+                                       (model "gemini-pro")
                                        (key google-gemini-key))
   "Send count tokens request."
   (google-gemini-request (concat google-gemini-generativelanguage-url
-                                 "v1beta/models/gemini-pro:countTokens?key="
+                                 "v1beta/models/" model ":countTokens?key="
                                  key)
     :type "POST"
     :headers (google-gemini--headers content-type)

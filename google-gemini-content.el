@@ -34,6 +34,7 @@
                                            &key
                                            (content-type "application/json")
                                            (key google-gemini-key)
+                                           (model "gemini-pro")
                                            (category "HARM_CATEGORY_DANGEROUS_CONTENT")
                                            (threshold "BLOCK_ONLY_HIGH")
                                            stop-sequences
@@ -43,12 +44,12 @@
                                            top-k)
   "Send generate content request."
   (google-gemini-request (concat google-gemini-generativelanguage-url
-                                 "v1beta/models/gemini-pro:generateContent?key="
+                                 "v1beta/models/" model ":generateContent?key="
                                  key)
     :type "POST"
     :headers (google-gemini--headers content-type)
     :data (google-gemini--json-encode
-           `(("contents" . [((parts . [((text . ,text))]))])
+           `(("contents" . [(("parts" . [(("text" . ,text))]))])
              ("safetySettings" . [(("category" . ,category)
                                    ("threshold" . ,threshold))])
              ("generationConfig" .
