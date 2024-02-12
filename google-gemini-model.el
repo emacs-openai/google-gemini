@@ -30,15 +30,24 @@
 ;;; API
 
 ;;;###autoload
-(cl-defun google-gemini-model ( name
+(cl-defun google-gemini-model ( model
                                 callback
                                 &key
+                                (parameters google-gemini-parameters)
                                 (key google-gemini-key))
-  "Send request to get model information."
+  "Send request to get model information.
+
+Arguments MODEL and CALLBACK are required for this type of request.
+MODEL is the name of the model.  CALLBACK is the execuation after request
+is made.
+
+Arguments PARAMETERS, and KEY are global options; however, you can overwrite the
+value by passing it in."
   (google-gemini-request (concat google-gemini-generativelanguage-url
-                                 "v1beta/models/" name "?key="
+                                 "v1beta/models/" model "?key="
                                  key)
     :type "GET"
+    :params parameters
     :parser 'json-read
     :complete (cl-function
                (lambda (&key data &allow-other-keys)
@@ -47,12 +56,20 @@
 ;;;###autoload
 (cl-defun google-gemini-models ( callback
                                  &key
+                                 (parameters google-gemini-parameters)
                                  (key google-gemini-key))
-  "Send request to get a list of supported models."
+  "Send request to get a list of supported models.
+
+Arguments CALLBACK is required for this type of request.
+CALLBACK is the execuation after request is made.
+
+Arguments PARAMETERS, and KEY are global options; however, you can overwrite the
+value by passing it in."
   (google-gemini-request (concat google-gemini-generativelanguage-url
                                  "v1beta/models?key="
                                  key)
     :type "GET"
+    :params parameters
     :parser 'json-read
     :complete (cl-function
                (lambda (&key data &allow-other-keys)
@@ -65,8 +82,8 @@
 (defun google-gemini-model-info ()
   "Print a model information."
   (interactive)
-  (if-let ((name (read-string "Name of the model: " "gemini-pro")))
-      (google-gemini-model name (lambda (data) (message "%s" data)))
+  (if-let ((model (read-string "Name of the model: " "gemini-pro")))
+      (google-gemini-model model (lambda (data) (message "%s" data)))
     (user-error "Abort, cancel get model info operation")))
 
 (defvar google-gemini-model-entries nil

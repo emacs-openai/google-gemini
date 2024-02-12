@@ -32,21 +32,22 @@
 ;;;###autoload
 (cl-defun google-gemini-embedding ( text callback
                                     &key
+                                    (parameters google-gemini-parameters)
                                     (content-type "application/json")
                                     (key google-gemini-key)
-                                    (model "embedding-001")
-                                    (category "HARM_CATEGORY_DANGEROUS_CONTENT")
-                                    (threshold "BLOCK_ONLY_HIGH")
-                                    stop-sequences
-                                    temperature
-                                    max-output-tokens
-                                    top-p
-                                    top-k)
-  "Send generate content request."
+                                    (model "embedding-001"))
+  "Send generate content request.
+
+Arguments PARAMETERS, CONTENT-TYPE, and KEY are global options;
+however, you can overwrite the value by passing it in.
+
+The rest of the arugments are optional, please see Google Gemini API reference
+page for more information.  Arguments here refer to MODEL."
   (google-gemini-request (concat google-gemini-generativelanguage-url
                                  "v1beta/models/" model ":embedContent?key="
                                  key)
     :type "POST"
+    :params parameters
     :headers (google-gemini--headers content-type)
     :data (google-gemini--json-encode
            `(("model" . ,(concat "models/" model))
