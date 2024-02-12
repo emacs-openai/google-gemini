@@ -29,21 +29,32 @@
 ;;
 ;;; API
 
-(defun google-gemini-content-make-contents (text)
-  "Create a contents value."
-  `((parts . [((text . ,text))])))
-
 ;;;###autoload
-(cl-defun google-gemini-content-generate ( contents callback
+(cl-defun google-gemini-content-generate ( text callback
                                            &key
-                                           (content-type "application/json"))
+                                           (content-type "application/json")
+                                           (category "HARM_CATEGORY_DANGEROUS_CONTENT")
+                                           (threshold "BLOCK_ONLY_HIGH")
+                                           stop-sequences
+                                           temperature
+                                           max-output-tokens
+                                           top-p
+                                           top-k)
   "Send generate content request."
   (request (format "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=%s"
                    google-gemini-key)
     :type "POST"
     :headers (google-gemini--headers content-type)
     :data (google-gemini--json-encode
-           `(("contents" . [,contents])))
+           `(("contents" . [((parts . [((text . ,text))]))])
+             ("safetySettings" . [(("category" . ,category)
+                                   ("threshold" . ,threshold))])
+             ("generationConfig" .
+              (("stopSequences" . ,stop-sequences)
+               ("temperature" . ,temperature)
+               ("maxOutputTokens" . ,max-output-tokens)
+               ("topP" . ,top-p)
+               ("topK" . ,top-k)))))
     :parser 'json-read
     :complete (cl-function
                (lambda (&key data &allow-other-keys)
@@ -56,9 +67,8 @@
 (defun google-gemini-content-prompt ()
   "Start making a conversation to Google Gemini."
   (interactive)
-  (if-let* ((text (read-string "Content: "))
-            (contents (google-gemini-content-make-contents text)))
-      (google-gemini-content-generate contents
+  (if-let ((text (read-string "Content: ")))
+      (google-gemini-content-generate text
                                       (lambda (data)
                                         (let-alist data
                                           (let-alist (elt .candidates 0)
