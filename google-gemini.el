@@ -140,5 +140,12 @@ The URL is the url for `request' function; then BODY is the arguments for rest."
                  (google-gemini--handle-error response)))
        ,@body)))
 
+;;
+;;; Constants
+
+(defconst google-gemini-generativelanguage-url
+  "https://generativelanguage.googleapis.com/"
+  "Base Url for generativelanguage services.")
+
 (provide 'google-gemini)
 ;;; google-gemini.el ends here

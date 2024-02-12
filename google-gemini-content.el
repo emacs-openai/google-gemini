@@ -42,7 +42,9 @@
                                            top-p
                                            top-k)
   "Send generate content request."
-  (google-gemini-request (format "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=%s" key)
+  (google-gemini-request (concat google-gemini-generativelanguage-url
+                                 "v1beta/models/gemini-pro:generateContent?key="
+                                 key)
     :type "POST"
     :headers (google-gemini--headers content-type)
     :data (google-gemini--json-encode
@@ -65,16 +67,16 @@
 
 ;;;###autoload
 (defun google-gemini-content-prompt ()
-  "Start making a conversation to Google Gemini."
+  "Ask to generate contents from Google Gemini."
   (interactive)
-  (if-let ((text (read-string "Content: ")))
+  (if-let ((text (read-string "[Generate] Content: ")))
       (google-gemini-content-generate text
                                       (lambda (data)
                                         (let-alist data
                                           (let-alist (elt .candidates 0)
                                             (let-alist .content
                                               (let-alist (elt .parts 0)
-                                                (message "%s" .text)))))))
+                                                (message "Response: %s" .text)))))))
     (user-error "Abort, cancel generate content operation")))
 
 (provide 'google-gemini-content)
