@@ -70,6 +70,10 @@ argument max-tokens. By seeing Google Gemini's references page:
 
 - [llm](https://github.com/ahyatt/llm)
 
+## 📝 Todo List
+
+- [ ] [Text-and-image input](https://ai.google.dev/tutorials/rest_quickstart#text-and-image_input)
+
 ## 🛠️ Contribute
 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
