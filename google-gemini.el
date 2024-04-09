@@ -77,7 +77,7 @@ auth-source is provided for convenience.")
 (defcustom google-gemini-parameters '()
   "The parameters for the Google Gemini request."
   :type 'list
-  :group 'openai)
+  :group 'google-gemini)
 
 ;;;###autoload
 (defun google-gemini-key-auth-source (&optional base-url)
@@ -108,8 +108,7 @@ Arguments CONTENT-TYPE are common request headers."
    `(("Content-Type" . ,content-type))))
 
 (defun google-gemini--json-encode (object)
-  "Wrapper for function `json-encode' but it remove nil value before
-constructing JSON data.
+  "Wrapper `json-encode' removing nil value before constructing JSON data.
 
 The argument OBJECT is an alist that can be construct to JSON data; see function
 `json-encode' for the detials."
