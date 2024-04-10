@@ -77,7 +77,7 @@ auth-source is provided for convenience.")
 (defcustom google-gemini-parameters '()
   "The parameters for the Google Gemini request."
   :type 'list
-  :group 'openai)
+  :group 'google-gemini)
 
 ;;;###autoload
 (defun google-gemini-key-auth-source (&optional base-url)
