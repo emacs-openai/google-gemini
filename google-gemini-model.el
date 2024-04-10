@@ -30,15 +30,15 @@
 ;;; API
 
 ;;;###autoload
-(cl-defun google-gemini-model ( model
-                                callback
-                                &key
-                                (parameters google-gemini-parameters)
-                                (key google-gemini-key))
+(cl-defun google-gemini-model (model
+                               callback
+                               &key
+                               (parameters google-gemini-parameters)
+                               (key google-gemini-key))
   "Send request to get model information.
 
 Arguments MODEL and CALLBACK are required for this type of request.
-MODEL is the name of the model.  CALLBACK is the execuation after request
+MODEL is the name of the model.  CALLBACK is the execution after request
 is made.
 
 Arguments PARAMETERS, and KEY are global options; however, you can overwrite the
@@ -54,14 +54,14 @@ value by passing it in."
                  (funcall callback data)))))
 
 ;;;###autoload
-(cl-defun google-gemini-models ( callback
-                                 &key
-                                 (parameters google-gemini-parameters)
-                                 (key google-gemini-key))
+(cl-defun google-gemini-models (callback
+                                &key
+                                (parameters google-gemini-parameters)
+                                (key google-gemini-key))
   "Send request to get a list of supported models.
 
 Arguments CALLBACK is required for this type of request.
-CALLBACK is the execuation after request is made.
+CALLBACK is the execution after request is made.
 
 Arguments PARAMETERS, and KEY are global options; however, you can overwrite the
 value by passing it in."

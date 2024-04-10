@@ -28,18 +28,21 @@
 ;;; API
 
 ;;;###autoload
-(cl-defun google-gemini-count-tokens ( text callback
-                                       &key
-                                       (parameters google-gemini-parameters)
-                                       (content-type "application/json")
-                                       (key google-gemini-key)
-                                       (model "gemini-pro"))
+(cl-defun google-gemini-count-tokens (text callback
+                                      &key
+                                      (parameters google-gemini-parameters)
+                                      (content-type "application/json")
+                                      (key google-gemini-key)
+                                      (model "gemini-pro"))
   "Send count tokens request.
+
+Arguments TEXT and CALLBACK are required for this type of request.
+TEXT is the content data.  CALLBACK is the execution after request is made.
 
 Arguments PARAMETERS, CONTENT-TYPE, and KEY are global options;
 however, you can overwrite the value by passing it in.
 
-The rest of the arugments are optional, please see Google Gemini API reference
+The rest of the arguments are optional, please see Google Gemini API reference
 page for more information.  Arguments here refer to MODEL."
   (google-gemini-request (concat google-gemini-generativelanguage-url
                                  "v1beta/models/" model ":countTokens?key="

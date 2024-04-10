@@ -3,12 +3,13 @@
 [![JCS-ELPA](https://raw.githubusercontent.com/jcs-emacs/badges/master/elpa/v/google-gemini.svg)](https://jcs-emacs.github.io/jcs-elpa/#/google-gemini)
 
 # google-gemini
+
 > Elisp library for the Google Gemini API
 
 [![CI](https://github.com/emacs-openai/google-gemini/actions/workflows/test.yml/badge.svg)](https://github.com/emacs-openai/google-gemini/actions/workflows/test.yml)
 
 The [Google Gemini][] Elisp library provides convenient access to the Gemini API from
-applications written in the Elisp language. 
+applications written in the Elisp language.
 
 *P.S. This package is expected to be used as a library, so there are only a few
 interactable commands you can use, and those are mostly examples.*
@@ -96,20 +97,20 @@ To run the test locally, you will need the following tools:
 Install all dependencies and development dependencies:
 
 ```sh
-$ eask install-deps --dev
+eask install-deps --dev
 ```
 
 To test the package's installation:
 
 ```sh
-$ eask package
-$ eask install
+eask package
+eask install
 ```
 
 To test compilation:
 
 ```sh
-$ eask compile
+eask compile
 ```
 
 **🪧 The following steps are optional, but we recommend you follow these lint results!**
@@ -117,13 +118,13 @@ $ eask compile
 The built-in `checkdoc` linter:
 
 ```sh
-$ eask lint checkdoc
+eask lint checkdoc
 ```
 
 The standard `package` linter:
 
 ```sh
-$ eask lint package
+eask lint package
 ```
 
 *📝 P.S. For more information, find the Eask manual at https://emacs-eask.github.io/.*
@@ -141,10 +142,9 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program.  If not, see <https://www.gnu.org/licenses/>.
+along with this program. If not, see <https://www.gnu.org/licenses/>.
 
 See [`LICENSE`](./LICENSE) for details.
-
 
 <!-- Links -->
 

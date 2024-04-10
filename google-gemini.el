@@ -62,7 +62,7 @@
 ;;; Request
 
 (defvar google-gemini-key ""
-  "Variable storing the gemini key or a function name to retrieve it.
+  "Variable storing the Gemini key or a function name to retrieve it.
 
 The function should take no arguments and return a string containing the key.
 
@@ -108,8 +108,7 @@ Arguments CONTENT-TYPE are common request headers."
    `(("Content-Type" . ,content-type))))
 
 (defun google-gemini--json-encode (object)
-  "Wrapper for function `json-encode' but it remove nil value before
-constructing JSON data.
+  "Wrapper `json-encode' removing nil value before constructing JSON data.
 
 The argument OBJECT is an alist that can be construct to JSON data; see function
 `json-encode' for the detials."
@@ -151,7 +150,7 @@ The URL is the url for `request' function; then BODY is the arguments for rest."
 
 (defconst google-gemini-generativelanguage-url
   "https://generativelanguage.googleapis.com/"
-  "Base Url for generativelanguage services.")
+  "Base URL for generativelanguage services.")
 
 (provide 'google-gemini)
 ;;; google-gemini.el ends here

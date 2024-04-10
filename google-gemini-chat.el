@@ -30,29 +30,29 @@
 ;;; API
 
 ;;;###autoload
-(cl-defun google-gemini-chat ( contents callback
-                               &key
-                               (content-type "application/json")
-                               (parameters google-gemini-parameters)
-                               (key google-gemini-key)
-                               (model "gemini-pro")
-                               (category "HARM_CATEGORY_DANGEROUS_CONTENT")
-                               (threshold "BLOCK_ONLY_HIGH")
-                               stop-sequences
-                               temperature
-                               max-output-tokens
-                               top-p
-                               top-k)
+(cl-defun google-gemini-chat (contents callback
+                              &key
+                              (content-type "application/json")
+                              (parameters google-gemini-parameters)
+                              (key google-gemini-key)
+                              (model "gemini-pro")
+                              (category "HARM_CATEGORY_DANGEROUS_CONTENT")
+                              (threshold "BLOCK_ONLY_HIGH")
+                              stop-sequences
+                              temperature
+                              max-output-tokens
+                              top-p
+                              top-k)
   "Send chat request.
 
 Arguments CONTENTS and CALLBACK are required for this type of request.
-CONTENTS is the chat conversation data.  CALLBACK is the execuation after
+CONTENTS is the chat conversation data.  CALLBACK is the execution after
 request is made.
 
 Arguments PARAMETERS, CONTENT-TYPE, and KEY are global options;
 however, you can overwrite the value by passing it in.
 
-The rest of the arugments are optional, please see Google Gemini API reference
+The rest of the arguments are optional, please see Google Gemini API reference
 page for more information.  Arguments here refer to MODEL, TEMPERATURE,
 STOP-SEQUENCES, MAX-OUTPUT-TOKENS, TOP-P, and TOP-K."
   (google-gemini-request (concat google-gemini-generativelanguage-url
