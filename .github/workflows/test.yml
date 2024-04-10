@@ -26,27 +26,27 @@ jobs:
           - 29.3
         experimental: [false]
         include:
-        - os: ubuntu-latest
-          emacs-version: snapshot
-          experimental: true
-        - os: macos-latest
-          emacs-version: snapshot
-          experimental: true
-        - os: windows-latest
-          emacs-version: snapshot
-          experimental: true
+          - os: ubuntu-latest
+            emacs-version: snapshot
+            experimental: true
+          - os: macos-latest
+            emacs-version: snapshot
+            experimental: true
+          - os: windows-latest
+            emacs-version: snapshot
+            experimental: true
 
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - uses: jcs090218/setup-emacs@master
-      with:
-        version: ${{ matrix.emacs-version }}
+      - uses: jcs090218/setup-emacs@master
+        with:
+          version: ${{ matrix.emacs-version }}
 
-    - uses: emacs-eask/setup-eask@master
-      with:
-        version: 'snapshot'
+      - uses: emacs-eask/setup-eask@master
+        with:
+          version: 'snapshot'
 
-    - name: Run tests
-      run:
-        make ci
+      - name: Run tests
+        run:
+          make ci
