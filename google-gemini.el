@@ -62,7 +62,7 @@
 ;;; Request
 
 (defvar google-gemini-key ""
-  "Variable storing the gemini key or a function name to retrieve it.
+  "Variable storing the Gemini key or a function name to retrieve it.
 
 The function should take no arguments and return a string containing the key.
 
@@ -150,7 +150,7 @@ The URL is the url for `request' function; then BODY is the arguments for rest."
 
 (defconst google-gemini-generativelanguage-url
   "https://generativelanguage.googleapis.com/"
-  "Base Url for generativelanguage services.")
+  "Base URL for generativelanguage services.")
 
 (provide 'google-gemini)
 ;;; google-gemini.el ends here

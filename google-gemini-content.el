@@ -30,30 +30,30 @@
 ;;; API
 
 ;;;###autoload
-(cl-defun google-gemini-content-generate ( text callback
-                                           &key
-                                           (parameters google-gemini-parameters)
-                                           (content-type "application/json")
-                                           (key google-gemini-key)
-                                           (model "gemini-pro")
-                                           (category "HARM_CATEGORY_DANGEROUS_CONTENT")
-                                           (threshold "BLOCK_ONLY_HIGH")
-                                           stop-sequences
-                                           temperature
-                                           max-output-tokens
-                                           top-p
-                                           top-k)
+(cl-defun google-gemini-content-generate (text callback
+                                          &key
+                                          (parameters google-gemini-parameters)
+                                          (content-type "application/json")
+                                          (key google-gemini-key)
+                                          (model "gemini-pro")
+                                          (category "HARM_CATEGORY_DANGEROUS_CONTENT")
+                                          (threshold "BLOCK_ONLY_HIGH")
+                                          stop-sequences
+                                          temperature
+                                          max-output-tokens
+                                          top-p
+                                          top-k)
   "Send generate content request.
 
 Arguments TEXT and CALLBACK are required for this type of request.
-TEXT is the content data.  CALLBACK is the execuation after request is made.
+TEXT is the content data.  CALLBACK is the execution after request is made.
 
 Arguments PARAMETERS, CONTENT-TYPE, and KEY are global options;
 however, you can overwrite the value by passing it in.
 
-The rest of the arugments are optional, please see Google Gemini API reference
-page for more information.  Arguments here refer to MODEL, TEMPERATURE,
-STOP-SEQUENCES, MAX-OUTPUT-TOKENS, TOP-P, and TOP-K."
+The rest of the arguments are optional, please see Google Gemini API reference
+page for more information.  Arguments here refer to MODEL, CATEGORY, THRESHOLD,
+TEMPERATURE, STOP-SEQUENCES, MAX-OUTPUT-TOKENS, TOP-P, and TOP-K."
   (google-gemini-request (concat google-gemini-generativelanguage-url
                                  "v1beta/models/" model ":generateContent?key="
                                  key)
