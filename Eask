@@ -1,3 +1,5 @@
+;; -*- mode: eask; lexical-binding: t -*-
+
 (package "google-gemini"
          "0.1.0"
          "Elisp library for the Google Gemini API")
