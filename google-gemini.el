@@ -1,6 +1,6 @@
 ;;; google-gemini.el --- Elisp library for the Google Gemini API  -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2024-2025  JenChieh
+;; Copyright (C) 2024-2026  JenChieh
 
 ;; Author: JenChieh <jcs090218@gmail.com>
 ;; Maintainer: JenChieh <jcs090218@gmail.com>
